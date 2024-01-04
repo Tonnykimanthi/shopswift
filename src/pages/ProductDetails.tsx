@@ -53,7 +53,7 @@ const ProductDetails = () => {
 
                 <div>
                   {/* Title */}
-                  <div className="flex -mt-2">
+                  <div className="flex -mt-2 gap-x-2">
                     <h2 className="-mt-0.5 text-3xl font-medium leading-tight">
                       {product.title}
                     </h2>
