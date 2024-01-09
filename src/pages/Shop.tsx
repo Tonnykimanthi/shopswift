@@ -59,7 +59,7 @@ const Shop = () => {
             />
           )}
 
-          <main className="mt-3 grid grid-cols-3 gap-3 max-md:grid-cols-2 max-sm:grid-cols-1">
+          <main className="mt-3 w-full grid grid-cols-3 gap-3 max-md:grid-cols-2 max-sm:grid-cols-1">
             {(products as productProps[]).map((item) => (
               <Link to={`/shop/${item.id}`} key={item.id}>
               <article
