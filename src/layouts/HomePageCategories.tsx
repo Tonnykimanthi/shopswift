@@ -12,7 +12,7 @@ const HomePageCategories = () => {
       title: "Women's clothing",
       image: "/images/women-clothing2.jpg",
       customStyles: "",
-      path: "womenclothing",
+      path: "women's clothing",
     },
     {
       title: "Jewelleries",
@@ -25,7 +25,7 @@ const HomePageCategories = () => {
       image: "/images/men-clothing2.jpg",
       customStyles:
         "row-start-1 col-start-3 row-span-2 max-sm:row-auto max-sm:col-auto",
-      path: "menclothing",
+      path: "men's clothing",
     },
   ];
 

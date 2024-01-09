@@ -32,9 +32,9 @@ function App() {
           <Route path="/" Component={Home} />
           <Route path="/shop" Component={Shop} />
           <Route path="/electronics" Component={Electronics} />
-          <Route path="/jewelleries" Component={Jewelleries} />
-          <Route path="/menclothing" Component={MenClothing} />
-          <Route path="/womenclothing" Component={WomenClothing} />
+          <Route path="/jewelery" Component={Jewelleries} />
+          <Route path="/men's clothing" Component={MenClothing} />
+          <Route path="/women's clothing" Component={WomenClothing} />
           <Route path="/shop/:id" Component={ProductDetails} />
         </Routes>
       </Router>

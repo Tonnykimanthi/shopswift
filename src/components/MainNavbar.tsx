@@ -14,7 +14,7 @@ const Navbar = () => {
           <Link to="/electronics">Electronics</Link>
         </li>
         <li className="text-primary-darkblue hover:text-secondary-blue transition-colors">
-          <Link to="/jewelleries">Jewelery</Link>
+          <Link to="/jewelery">Jewelery</Link>
         </li>
       </ul>
     </nav>

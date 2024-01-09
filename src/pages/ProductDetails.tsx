@@ -94,6 +94,7 @@ const ProductDetails = () => {
               {/* Product Description */}
               <section className="mt-8">
                 <h3 className="text-2xl font-medium">Product Description</h3>
+                <p className="mt-2 w-2/3">{product.description}</p>
               </section>
             </main>
           )}
