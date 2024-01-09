@@ -3,8 +3,8 @@ import ErrorMessage from "../components/ErrorMessage";
 import Loader from "../components/Loader";
 import useFetch from "../hooks/useFetch";
 import { Link, useParams } from "react-router-dom";
-import { FaRegHeart } from "react-icons/fa";
 import AddToCartBtn from "../components/AddToCartBtn";
+import LikeButton from "../components/LikeButton";
 
 type productProps = {
   id: number;
@@ -57,9 +57,7 @@ const ProductDetails = () => {
                     <h2 className="-mt-0.5 text-3xl font-medium leading-tight">
                       {product.title}
                     </h2>
-                    <button className="self-start p-2 rounded-full hover:bg-primary-orange/30 transition">
-                      <FaRegHeart className="w-6 h-6 fill-primary-orange" />
-                    </button>
+                    <LikeButton />
                   </div>
                   <div className="mt-2">
                     <span className="block text-3xl font-bold">
