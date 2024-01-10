@@ -35,14 +35,14 @@ const ProductDetails = () => {
   }, [data]);
 
   return (
-    <div className="mt-5 px-8 flex flex-col items-center max-lg:px-5">
+    <div className="mt-5 px-8 flex flex-col items-center max-lg:px-5 max-sm:px-2">
       {loading && <Loader />}
       {!loading && error ? (
         <ErrorMessage />
       ) : (
         <>
           {product && (
-            <main className="py-4 bg-slate-50 relative">
+            <main className="py-4 bg-slate-50 relative max-lg:px-5">
               <section className="flex gap-x-2 max-md:flex-col max-md:items-center bg-slate-50">
                 <div className="flex-shrink-0 max-w-72 p-2 overflow-hidden max-md:w-full">
                   <img
