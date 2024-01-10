@@ -96,7 +96,6 @@ const ProductDetails = () => {
 
                   <OrderNowSection />
                 </div>
-
               </section>
             </main>
           )}
