@@ -44,7 +44,7 @@ const ProductDetails = () => {
           {product && (
             <main className="py-4 bg-slate-50 relative">
               <section className="flex gap-x-2 max-md:flex-col max-md:items-center bg-slate-50">
-                <div className="w-1/3 max-w-72 p-2 overflow-hidden max-md:w-full">
+                <div className="flex-shrink-0 max-w-72 p-2 overflow-hidden max-md:w-full">
                   <img
                     className="object-cover w-full"
                     src={product.image}
@@ -56,7 +56,7 @@ const ProductDetails = () => {
                   <div>
                     {/* Title */}
                     <div className="flex -mt-2 gap-x-2 max-md:mt-0">
-                      <h2 className="text-2xl font-medium leading-tight">
+                      <h2 className="mt-1 text-2xl font-medium leading-tight max-md:text-center">
                         {product.title}
                       </h2>
                       <LikeButton />
