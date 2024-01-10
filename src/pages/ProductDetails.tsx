@@ -42,7 +42,7 @@ const ProductDetails = () => {
       ) : (
         <>
           {product && (
-            <main className="py-4 bg-slate-50">
+            <main className="py-4 bg-slate-50 relative">
               <section className="flex gap-x-2 max-md:flex-col max-md:items-center bg-slate-50">
                 <div className="w-1/3 max-w-72 p-2 overflow-hidden max-md:w-full">
                   <img
