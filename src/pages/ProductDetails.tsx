@@ -52,7 +52,7 @@ const ProductDetails = () => {
                   />
                 </div>
 
-                <div className="w-2/3 px-2 flex flex-grow max-lg:flex-col divide-y-2 max-md:w-full">
+                <div className="w-2/3 flex flex-grow max-lg:flex-col divide-y-2 max-md:w-full">
                   <div>
                     {/* Title */}
                     <div className="flex -mt-2 gap-x-2 max-md:mt-0">
@@ -89,7 +89,7 @@ const ProductDetails = () => {
                         <p className="mt-1">{product.description}</p>
                       </section>
                     </div>
-                    <div className="mt-5 w-full">
+                    <div className="mt-5 px-2 w-full">
                       <AddToCartBtn />
                     </div>
                   </div>
