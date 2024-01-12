@@ -5,7 +5,7 @@ import ErrorMessage from "../components/ErrorMessage";
 import { useEffect, useState } from "react";
 import AddToCartBtn from "../components/AddToCartBtn";
 import NoResultsFound from "../components/NoResultsFound";
-import { Link, json } from "react-router-dom";
+import { Link } from "react-router-dom";
 import EmptyLikeButton from "../components/EmptyLikeButton";
 import FilledLikeButton from "../components/FilledLikeButton";
 
