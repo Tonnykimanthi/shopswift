@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import AddToCartBtn from "../components/AddToCartBtn";
 import NoResultsFound from "../components/NoResultsFound";
 import { Link } from "react-router-dom";
-import LikeButton from "../components/LikeButton";
+import EmptyLikeButton from "../components/EmptyLikeButton";
 
 interface productProps {
   id: number;
@@ -65,7 +65,7 @@ const Shop = () => {
               <Link to={`/shop/${item.id}`} key={item.id}>
                 <article className="bg-white flex flex-col p-4 rounded cursor-pointer overflow-hidden group relative">
                   <div className="absolute top-1 right-1 z-10">
-                    <LikeButton />
+                    <EmptyLikeButton />
                   </div>
                   <div className="flex justify-center h-40 overflow-hidden">
                     <img

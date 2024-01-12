@@ -3,8 +3,9 @@ import ErrorMessage from "../components/ErrorMessage";
 import Loader from "../components/Loader";
 import useFetch from "../hooks/useFetch";
 import { Link, useParams } from "react-router-dom";
+// Components
 import AddToCartBtn from "../components/AddToCartBtn";
-import LikeButton from "../components/LikeButton";
+import EmptyLikeButton from "../components/EmptyLikeButton";
 import OrderNowSection from "../components/OrderNowSection";
 
 type productProps = {
@@ -59,7 +60,7 @@ const ProductDetails = () => {
                       <h2 className="mt-1 text-2xl font-medium leading-tight max-md:text-center">
                         {product.title}
                       </h2>
-                      <LikeButton />
+                      <EmptyLikeButton />
                     </div>
                     <div className="mt-2">
                       <span className="block text-3xl font-bold">
