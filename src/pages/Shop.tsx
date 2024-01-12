@@ -5,8 +5,9 @@ import ErrorMessage from "../components/ErrorMessage";
 import { useEffect, useState } from "react";
 import AddToCartBtn from "../components/AddToCartBtn";
 import NoResultsFound from "../components/NoResultsFound";
-import { Link } from "react-router-dom";
+import { Link, json } from "react-router-dom";
 import EmptyLikeButton from "../components/EmptyLikeButton";
+import FilledLikeButton from "../components/FilledLikeButton";
 
 interface productProps {
   id: number;
@@ -15,15 +16,26 @@ interface productProps {
   image: string;
 }
 
+interface likeProps {
+  [id: number]: boolean
+}
+
 const Shop = () => {
   const { data, loading, error } = useFetch(
     "https://fakestoreapi.com/products"
   );
   const [products, setProducts] = useState<productProps[]>([]);
   const [searchValue, setSearchValue] = useState("");
+  const [like, setLike] = useState<likeProps>({});
 
   useEffect(() => {
     handleSearchProduct();
+
+      // Get liked products from LS
+      const likedProducts = localStorage.getItem("likedProducts")
+      if(likedProducts){
+        setLike(JSON.parse(likedProducts));
+      }
   }, [data, searchValue]);
 
   const handleSearchProduct = () => {
@@ -43,6 +55,14 @@ const Shop = () => {
     }
   };
 
+  const handleLike = (e: React.MouseEvent<HTMLDivElement>, id: number) => {
+    e.preventDefault()
+    setLike((prevState) => {
+      const likedProducts = {...prevState, [id]: !prevState[id] }
+      localStorage.setItem("likedProducts", JSON.stringify(likedProducts))
+      return likedProducts;
+    });
+  };
   return (
     <div className="mt-4 px-5 flex flex-col items-center">
       {loading && <Loader />}
@@ -64,8 +84,10 @@ const Shop = () => {
             {(products as productProps[]).map((item) => (
               <Link to={`/shop/${item.id}`} key={item.id}>
                 <article className="bg-white flex flex-col p-4 rounded cursor-pointer overflow-hidden group relative">
-                  <div className="absolute top-1 right-1 z-10">
-                    <EmptyLikeButton />
+                  <div className="absolute top-1 right-1 z-10" onClick={(e) => {
+                    handleLike(e, item.id)
+                  }}>
+                    {like[item.id] ? <FilledLikeButton /> : <EmptyLikeButton />}
                   </div>
                   <div className="flex justify-center h-40 overflow-hidden">
                     <img
