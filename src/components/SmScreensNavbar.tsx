@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useRef } from "react";
-import { navContext } from "../App";
+import { appContext } from "../App";
 import { IoMdClose } from "react-icons/io";
 
 interface NavcontextProps {
@@ -9,7 +9,7 @@ interface NavcontextProps {
 }
 const SmScreensNavbar = () => {
   const { navIsActive, setNavIsActive } = useContext(
-    navContext
+    appContext
   ) as NavcontextProps;
 
   const navBar = useRef<HTMLElement>(null);

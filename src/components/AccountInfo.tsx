@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { navContext } from "../App";
+import { appContext } from "../App";
 import { MdFavoriteBorder } from "react-icons/md";
 import { FaCartArrowDown } from "react-icons/fa6";
 import { HiOutlineMenu } from "react-icons/hi";
@@ -12,7 +12,7 @@ interface NavcontextProps {
 }
 
 const AccountInfo = () => {
-  const { navIsActive, setNavIsActive } = useContext(navContext) as NavcontextProps;
+  const { navIsActive, setNavIsActive } = useContext(appContext) as NavcontextProps;
 
   return (
     <div className="mr-2.5 flex items-center gap-x-5">

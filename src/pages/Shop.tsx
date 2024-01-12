@@ -1,13 +1,17 @@
+import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+// Components
+import { appContext } from "../App";
 import useFetch from "../hooks/useFetch";
 import Search from "../components/Search";
 import Loader from "../components/Loader";
 import ErrorMessage from "../components/ErrorMessage";
-import { useEffect, useState } from "react";
 import AddToCartBtn from "../components/AddToCartBtn";
 import NoResultsFound from "../components/NoResultsFound";
-import { Link } from "react-router-dom";
+// Icons
 import EmptyLikeButton from "../components/EmptyLikeButton";
 import FilledLikeButton from "../components/FilledLikeButton";
+import { ContextProps } from "../App";
 
 interface productProps {
   id: number;
@@ -16,26 +20,16 @@ interface productProps {
   image: string;
 }
 
-interface likeProps {
-  [id: number]: boolean
-}
-
 const Shop = () => {
   const { data, loading, error } = useFetch(
     "https://fakestoreapi.com/products"
   );
   const [products, setProducts] = useState<productProps[]>([]);
   const [searchValue, setSearchValue] = useState("");
-  const [like, setLike] = useState<likeProps>({});
+  const {like, handleLike} = useContext(appContext) as ContextProps;
 
   useEffect(() => {
     handleSearchProduct();
-
-      // Get liked products from LS
-      const likedProducts = localStorage.getItem("likedProducts")
-      if(likedProducts){
-        setLike(JSON.parse(likedProducts));
-      }
   }, [data, searchValue]);
 
   const handleSearchProduct = () => {
@@ -55,14 +49,6 @@ const Shop = () => {
     }
   };
 
-  const handleLike = (e: React.MouseEvent<HTMLDivElement>, id: number) => {
-    e.preventDefault()
-    setLike((prevState) => {
-      const likedProducts = {...prevState, [id]: !prevState[id] }
-      localStorage.setItem("likedProducts", JSON.stringify(likedProducts))
-      return likedProducts;
-    });
-  };
   return (
     <div className="mt-4 px-5 flex flex-col items-center">
       {loading && <Loader />}

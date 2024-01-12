@@ -10,20 +10,43 @@ import WomenClothing from "./pages/WomenClothing";
 import ProductDetails from "./pages/ProductDetails";
 // React
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
-interface NavContextProps {
+export interface ContextProps {
   navIsActive: boolean;
   setNavIsActive: React.Dispatch<React.SetStateAction<boolean>>;
+  like: likeProps;
+  handleLike: (e: React.MouseEvent<HTMLDivElement>, id: number) => void
+}
+interface likeProps {
+  [id: number]: boolean;
 }
 
-export const navContext = createContext<NavContextProps | null>(null);
+export const appContext = createContext<ContextProps | null>(null);
 
 function App() {
   const [navIsActive, setNavIsActive] = useState(false);
+  const [like, setLike] = useState<likeProps>({});
+
+  useEffect(() => {
+    // Get liked products from LS
+    const likedProducts = localStorage.getItem("likedProducts");
+    if (likedProducts) {
+      setLike(JSON.parse(likedProducts));
+    }
+  }, []);
+
+  const handleLike = (e: React.MouseEvent<HTMLDivElement>, id: number) => {
+    e.preventDefault();
+    setLike((prevState) => {
+      const likedProducts = { ...prevState, [id]: !prevState[id] };
+      localStorage.setItem("likedProducts", JSON.stringify(likedProducts));
+      return likedProducts;
+    });
+  };
 
   return (
-    <navContext.Provider value={{ navIsActive, setNavIsActive }}>
+    <appContext.Provider value={{ navIsActive, setNavIsActive, like, handleLike }}>
       <Router>
         <Header />
         {/* Nav for sm screens */}
@@ -38,7 +61,7 @@ function App() {
           <Route path="/shop/:id" Component={ProductDetails} />
         </Routes>
       </Router>
-    </navContext.Provider>
+    </appContext.Provider>
   );
 }
 
