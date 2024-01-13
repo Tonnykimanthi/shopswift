@@ -3,6 +3,11 @@ import Loader from "../components/Loader";
 import ErrorMessage from "../components/ErrorMessage";
 import AddToCartBtn from "../components/AddToCartBtn";
 import { Link } from "react-router-dom";
+// Icons
+import EmptyLikeButton from "../components/EmptyLikeButton";
+import FilledLikeButton from "../components/FilledLikeButton";
+import { ContextProps, appContext } from "../App";
+import { useContext } from "react";
 
 interface productProps {
   id: number;
@@ -15,6 +20,7 @@ const Jewelleries = () => {
   const { data, loading, error } = useFetch(
     "https://fakestoreapi.com/products/category/jewelery"
   );
+  const {like, handleLike} = useContext(appContext) as ContextProps;
 
   return (
     <div className="p-5 flex flex-col items-center">
@@ -27,7 +33,12 @@ const Jewelleries = () => {
           <main className="mt-3 grid grid-cols-3 gap-3 max-md:grid-cols-2 max-sm:grid-cols-1">
             {((data as productProps[]) || []).map((item) => (
               <Link to={`/shop/${item.id}`} key={item.id}>
-                <article className="bg-white flex flex-col p-4 rounded cursor-pointer overflow-hidden group">
+                <article className="bg-white flex flex-col p-4 rounded cursor-pointer overflow-hidden group relative">
+                <div className="absolute top-1 right-1 z-10" onClick={(e) => {
+                    handleLike(e, item.id)
+                  }}>
+                    {like[item.id] ? <FilledLikeButton /> : <EmptyLikeButton />}
+                  </div>
                   <div className="flex justify-center h-40 overflow-hidden">
                     <img
                       className="h-full object-cover group-hover:scale-125 transition-all duration-500"
