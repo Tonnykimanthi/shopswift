@@ -18,7 +18,7 @@ const HomePageCategories = () => {
       title: "Jewelleries",
       image: "/images/jewellery2.jpg",
       customStyles: "col-span-2 max-sm:col-span-1",
-      path: "jewelleries",
+      path: "jewelery",
     },
     {
       title: "Men's clothing",
