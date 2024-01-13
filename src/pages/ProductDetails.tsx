@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ErrorMessage from "../components/ErrorMessage";
 import Loader from "../components/Loader";
 import useFetch from "../hooks/useFetch";
 import { Link, useParams } from "react-router-dom";
-// Components
+// Components/icons
 import AddToCartBtn from "../components/AddToCartBtn";
-import EmptyLikeButton from "../components/EmptyLikeButton";
 import OrderNowSection from "../components/OrderNowSection";
+import EmptyLikeButton from "../components/EmptyLikeButton";
+import FilledLikeButton from "../components/FilledLikeButton";
+import { ContextProps, appContext } from "../App";
 
 type productProps = {
   id: number;
@@ -26,6 +28,7 @@ const ProductDetails = () => {
   const { data, loading, error } = useFetch(
     `https://fakestoreapi.com/products/${id}`
   );
+  const { like, handleLike } = useContext(appContext) as ContextProps;
 
   const [product, setProduct] = useState<productProps | null>(null);
 
@@ -60,7 +63,17 @@ const ProductDetails = () => {
                       <h2 className="mt-1 text-2xl font-medium leading-tight max-md:text-center">
                         {product.title}
                       </h2>
-                      <EmptyLikeButton />
+                      <div
+                        onClick={(e) => {
+                          handleLike(e, product.id);
+                        }}
+                      >
+                        {like[product.id] ? (
+                          <FilledLikeButton />
+                        ) : (
+                          <EmptyLikeButton />
+                        )}
+                      </div>
                     </div>
                     <div className="mt-2">
                       <span className="block text-3xl font-bold">
