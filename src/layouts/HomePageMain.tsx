@@ -8,7 +8,6 @@ const HomePageMain = () => {
   const [sectionKey, setSectionKey] = useState<number>(0);
   const [asideKey, setAsideKey] = useState<number>(1);
 
-  console.log("current", currentIndex);
   useEffect(() => {
     const currentIndex = setInterval(handleCurrentCategory, 5000);
 
