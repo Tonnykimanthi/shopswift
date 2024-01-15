@@ -35,7 +35,11 @@ function App() {
     const likedProducts = localStorage.getItem("likedProducts");
     if (likedProducts) {
       setLikedProducts(JSON.parse(likedProducts));
-      setLikeCount(Object.values(JSON.parse(likedProducts)).filter(value => value).length);
+
+      // Set likeCount
+      setLikeCount(
+        Object.values(JSON.parse(likedProducts)).filter((value) => value).length
+      );
     }
   }, []);
 
@@ -44,14 +48,25 @@ function App() {
     setLikedProducts((prevState) => {
       const likedProducts = { ...prevState, [id]: !prevState[id] };
       localStorage.setItem("likedProducts", JSON.stringify(likedProducts));
-      setLikeCount(Object.values(likedProducts).filter(value => value).length)
+
+      // Set likeCount
+      setLikeCount(
+        Object.values(likedProducts).filter((value) => value).length
+      );
+
       return likedProducts;
     });
   };
-  
+
   return (
     <appContext.Provider
-      value={{ navIsActive, setNavIsActive, likedProducts, handleLike, likeCount }}
+      value={{
+        navIsActive,
+        setNavIsActive,
+        likedProducts,
+        handleLike,
+        likeCount,
+      }}
     >
       <Router>
         <Header />
