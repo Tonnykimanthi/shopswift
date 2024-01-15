@@ -12,7 +12,7 @@ interface productItemProps {
 }
 
 const ProductItem = ({ item }: productItemProps) => {
-  const { like, handleLike } = useContext(appContext) as ContextProps;
+  const { likedProducts, handleLike } = useContext(appContext) as ContextProps;
   return (
     <Link to={`/shop/${item.id}`}>
       <article className="bg-white flex flex-col p-4 rounded cursor-pointer overflow-hidden group relative">
@@ -22,7 +22,7 @@ const ProductItem = ({ item }: productItemProps) => {
             handleLike(e, item.id);
           }}
         >
-          {like[item.id] ? <FilledLikeButton /> : <EmptyLikeButton />}
+          {likedProducts[item.id] ? <FilledLikeButton /> : <EmptyLikeButton />}
         </div>
         <div className="flex justify-center h-40 overflow-hidden">
           <img

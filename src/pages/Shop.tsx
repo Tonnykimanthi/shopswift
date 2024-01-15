@@ -21,7 +21,6 @@ const Shop = () => {
   const [products, setProducts] = useState<productProps[]>([]);
   const [searchValue, setSearchValue] = useState("");
 
-
   useEffect(() => {
     handleSearchProduct();
   }, [data, searchValue]);
@@ -62,7 +61,7 @@ const Shop = () => {
 
           <main className="mt-3 w-full grid grid-cols-3 gap-3 max-md:grid-cols-2 max-sm:grid-cols-1">
             {(products as productProps[]).map((item) => (
-              <ProductItem item={item} key={item.id}/>
+              <ProductItem item={item} key={item.id} />
             ))}
           </main>
           {products.length === 0 && !loading && <NoResultsFound />}

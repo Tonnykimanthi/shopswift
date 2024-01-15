@@ -28,7 +28,7 @@ const ProductDetails = () => {
   const { data, loading, error } = useFetch(
     `https://fakestoreapi.com/products/${id}`
   );
-  const { like, handleLike } = useContext(appContext) as ContextProps;
+  const { likedProducts, handleLike } = useContext(appContext) as ContextProps;
 
   const [product, setProduct] = useState<productProps | null>(null);
 
@@ -68,7 +68,7 @@ const ProductDetails = () => {
                           handleLike(e, product.id);
                         }}
                       >
-                        {like[product.id] ? (
+                        {likedProducts[product.id] ? (
                           <FilledLikeButton />
                         ) : (
                           <EmptyLikeButton />
