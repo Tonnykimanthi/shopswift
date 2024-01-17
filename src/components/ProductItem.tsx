@@ -13,9 +13,10 @@ interface productItemProps {
 }
 
 const ProductItem = ({ item }: productItemProps) => {
-  const { likedProducts, handleLike, productQuantity } = useContext(appContext) as ContextProps;
+  const { likedProducts, handleLike, productQuantity } = useContext(
+    appContext
+  ) as ContextProps;
 
-  
   return (
     <Link to={`/shop/${item.id}`}>
       <article className="bg-white flex flex-col p-4 rounded cursor-pointer overflow-hidden group relative">
@@ -40,8 +41,12 @@ const ProductItem = ({ item }: productItemProps) => {
 
         <div className="flex flex-col mt-auto gap-y-1">
           <span className="text-lg font-bold">{`$${item.price}`}</span>
-          {productQuantity[item.id] < 1 || productQuantity[item.id] === undefined ? <AddToCartBtn item={item}/> : <CartQuantityBtn item={item}/>}
-          
+          {productQuantity[item.id] < 1 ||
+          productQuantity[item.id] === undefined ? (
+            <AddToCartBtn item={item} />
+          ) : (
+            <CartQuantityBtn item={item} />
+          )}
         </div>
       </article>
     </Link>

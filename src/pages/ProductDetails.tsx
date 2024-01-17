@@ -9,6 +9,7 @@ import OrderNowSection from "../components/OrderNowSection";
 import EmptyLikeButton from "../components/EmptyLikeButton";
 import FilledLikeButton from "../components/FilledLikeButton";
 import { ContextProps, appContext } from "../App";
+import CartQuantityBtn from "../components/CartQuantityBtn";
 
 type productProps = {
   id: number;
@@ -28,7 +29,9 @@ const ProductDetails = () => {
   const { data, loading, error } = useFetch(
     `https://fakestoreapi.com/products/${id}`
   );
-  const { likedProducts, handleLike } = useContext(appContext) as ContextProps;
+  const { likedProducts, handleLike, productQuantity } = useContext(
+    appContext
+  ) as ContextProps;
 
   const [product, setProduct] = useState<productProps | null>(null);
 
@@ -104,7 +107,11 @@ const ProductDetails = () => {
                       </section>
                     </div>
                     <div className="mt-5 px-2 w-full">
-                      <AddToCartBtn />
+                      {productQuantity[product.id] < 1 ? (
+                        <AddToCartBtn item={product} />
+                      ) : (
+                        <CartQuantityBtn item={product} />
+                      )}
                     </div>
                   </div>
 
