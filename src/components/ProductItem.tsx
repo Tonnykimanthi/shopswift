@@ -6,6 +6,7 @@ import { useContext } from "react";
 import AddToCartBtn from "./AddToCartBtn";
 import FilledLikeButton from "./FilledLikeButton";
 import EmptyLikeButton from "./EmptyLikeButton";
+import CartQuantityBtn from "./CartQuantityBtn";
 
 interface productItemProps {
   item: productProps;
@@ -38,6 +39,7 @@ const ProductItem = ({ item }: productItemProps) => {
         <div className="flex flex-col mt-auto gap-y-1">
           <span className="text-lg font-bold">{`$${item.price}`}</span>
           <AddToCartBtn />
+          <CartQuantityBtn />
         </div>
       </article>
     </Link>
