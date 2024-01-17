@@ -18,9 +18,15 @@ export interface ContextProps {
   likedProducts: likedProductsProps;
   handleLike: (e: React.MouseEvent<HTMLDivElement>, id: number) => void;
   likeCount: number;
+  handleIncreaseQuantity: (id: number) => void;
+  handleDecreaseQuantity: (id: number) => void;
+  productQuantity: productQuantityTypes;
 }
 interface likedProductsProps {
   [id: number]: boolean;
+}
+interface productQuantityTypes {
+  [id: number]: number;
 }
 
 export const appContext = createContext<ContextProps | null>(null);
@@ -29,6 +35,9 @@ function App() {
   const [navIsActive, setNavIsActive] = useState(false);
   const [likedProducts, setLikedProducts] = useState<likedProductsProps>({});
   const [likeCount, setLikeCount] = useState(0);
+  const [productQuantity, setProductQuantity] = useState<productQuantityTypes>(
+    {}
+  );
 
   useEffect(() => {
     // Get liked products from LS
@@ -42,6 +51,7 @@ function App() {
       );
     }
   }, []);
+
 
   const handleLike = (e: React.MouseEvent<HTMLDivElement>, id: number) => {
     e.preventDefault();
@@ -58,6 +68,21 @@ function App() {
     });
   };
 
+  const handleIncreaseQuantity = (id: number) => {
+    setProductQuantity((prev) => ({
+      ...productQuantity,
+      [id]: (prev[id] || 0) + 1,
+    }));
+    console.log(productQuantity);
+  };
+  const handleDecreaseQuantity = (id: number) => {
+    setProductQuantity((prev) => ({
+      ...productQuantity,
+      [id]: Math.max((prev[id] || 0) - 1, 0),
+    }));
+    console.log(productQuantity);
+  };
+
   return (
     <appContext.Provider
       value={{
@@ -66,6 +91,9 @@ function App() {
         likedProducts,
         handleLike,
         likeCount,
+        handleDecreaseQuantity,
+        handleIncreaseQuantity,
+        productQuantity,
       }}
     >
       <Router>
