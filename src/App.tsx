@@ -40,24 +40,32 @@ function App() {
   );
 
   useEffect(() => {
+    // Get product quantity from LS
+    const productQuantityFromLS = localStorage.getItem("product-quantity");
+    if (productQuantityFromLS) {
+      setProductQuantity(JSON.parse(productQuantityFromLS));
+    }
+
     // Get liked products from LS
-    const likedProducts = localStorage.getItem("likedProducts");
-    if (likedProducts) {
-      setLikedProducts(JSON.parse(likedProducts));
+    const likedProductsFromLS = localStorage.getItem("liked-products");
+    if (likedProductsFromLS) {
+      setLikedProducts(JSON.parse(likedProductsFromLS));
 
       // Set likeCount
       setLikeCount(
-        Object.values(JSON.parse(likedProducts)).filter((value) => value).length
+        Object.values(JSON.parse(likedProductsFromLS)).filter((value) => value)
+          .length
       );
+
     }
   }, []);
-
+  
 
   const handleLike = (e: React.MouseEvent<HTMLDivElement>, id: number) => {
     e.preventDefault();
     setLikedProducts((prevState) => {
       const likedProducts = { ...prevState, [id]: !prevState[id] };
-      localStorage.setItem("likedProducts", JSON.stringify(likedProducts));
+      localStorage.setItem("liked-products", JSON.stringify(likedProducts));
 
       // Set likeCount
       setLikeCount(
@@ -69,20 +77,30 @@ function App() {
   };
 
   const handleIncreaseQuantity = (id: number) => {
-    setProductQuantity((prev) => ({
-      ...productQuantity,
-      [id]: (prev[id] || 0) + 1,
-    }));
-    console.log(productQuantity);
+    setProductQuantity((prev) => {
+      const productsQuantity = { ...prev, [id]: (prev[id] || 0) + 1 };
+      localStorage.setItem(
+        "product-quantity",
+        JSON.stringify(productsQuantity)
+      );
+      return productsQuantity;
+    });
   };
   const handleDecreaseQuantity = (id: number) => {
-    setProductQuantity((prev) => ({
-      ...productQuantity,
-      [id]: Math.max((prev[id] || 0) - 1, 0),
-    }));
-    console.log(productQuantity);
-  };
-
+    setProductQuantity((prev) => {
+      const productsQuantity = {
+        ...prev,
+        [id]: Math.max((prev[id] || 0) - 1, 0),
+      };
+      localStorage.setItem(
+        "product-quantity",
+        JSON.stringify(productsQuantity)
+        );
+        return productsQuantity;
+      });
+    };
+    console.log(productQuantity)
+    
   return (
     <appContext.Provider
       value={{

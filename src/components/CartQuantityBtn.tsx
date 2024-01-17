@@ -15,8 +15,7 @@ const CartQuantityBtn = ({ item }: itemProps) => {
   return (
     <div className="border border-primary-orange/80 flex justify-around items-center w-full py-2 font-medium transition" onClick={e => e.preventDefault()}>
       <button
-        onClick={(e) => {
-          e.preventDefault();
+        onClick={() => {
           handleDecreaseQuantity(item.id);
         }}
       >
@@ -24,8 +23,7 @@ const CartQuantityBtn = ({ item }: itemProps) => {
       </button>
       <span className="text-xl">{productQuantity[item.id] || 0}</span>
       <button
-        onClick={(e) => {
-          e.preventDefault();
+        onClick={() => {
           handleIncreaseQuantity(item.id);
         }}
       >
