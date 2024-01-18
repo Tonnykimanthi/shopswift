@@ -6,6 +6,7 @@ import Loader from "../components/Loader";
 import ErrorMessage from "../components/ErrorMessage";
 import NoResultsFound from "../components/NoResultsFound";
 import ProductItem from "../components/ProductItem";
+import CategoriesTitle from "../components/CategoriesTitle";
 
 export interface productProps {
   id: number;
@@ -52,11 +53,14 @@ const Shop = () => {
         <div className="flex flex-col items-center w-full">
           {/* Search */}
           {!loading && (
-            <Search
-              searchValue={searchValue}
-              setSearchValue={setSearchValue}
-              handleSearchProduct={handleSearchProduct}
-            />
+            <>
+              <Search
+                searchValue={searchValue}
+                setSearchValue={setSearchValue}
+                handleSearchProduct={handleSearchProduct}
+              />
+              <CategoriesTitle title="All Categories"/>
+            </>
           )}
 
           <main className="mt-3 w-full grid grid-cols-3 gap-3 max-md:grid-cols-2 max-sm:grid-cols-1">

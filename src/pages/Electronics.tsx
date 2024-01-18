@@ -2,6 +2,7 @@ import useFetch from "../hooks/useFetch";
 import Loader from "../components/Loader";
 import ErrorMessage from "../components/ErrorMessage";
 import ProductItem from "../components/ProductItem";
+import CategoriesTitle from "../components/CategoriesTitle";
 
 interface productProps {
   id: number;
@@ -20,6 +21,8 @@ const Electronics = () => {
   return (
     <div className="p-5 flex flex-col items-center">
       {loading && <Loader />}
+
+      {!loading && !error && <CategoriesTitle title="Electronics"/>}
 
       {!loading && error ? (
         <ErrorMessage />
