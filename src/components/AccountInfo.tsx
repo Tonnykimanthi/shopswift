@@ -5,12 +5,6 @@ import { MdFavoriteBorder } from "react-icons/md";
 import { FaCartArrowDown } from "react-icons/fa6";
 import { HiOutlineMenu } from "react-icons/hi";
 
-
-interface NavcontextProps {
-  navIsActive: boolean;
-  setNavIsActive: (navIsActive: boolean) => void;
-}
-
 const AccountInfo = () => {
   const { navIsActive, setNavIsActive, likeCount, productsInCartCount } = useContext(appContext) as ContextProps;
 
