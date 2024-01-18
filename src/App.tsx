@@ -21,6 +21,7 @@ export interface ContextProps {
   handleIncreaseQuantity: (id: number) => void;
   handleDecreaseQuantity: (id: number) => void;
   productQuantity: productQuantityTypes;
+  productsInCartCount: number;
 }
 interface likedProductsProps {
   [id: number]: boolean;
@@ -38,12 +39,19 @@ function App() {
   const [productQuantity, setProductQuantity] = useState<productQuantityTypes>(
     {}
   );
+  const [productsInCartCount, setproductsInCartCount] = useState(0);
 
   useEffect(() => {
     // Get product quantity from LS
     const productQuantityFromLS = localStorage.getItem("product-quantity");
     if (productQuantityFromLS) {
       setProductQuantity(JSON.parse(productQuantityFromLS));
+
+      setproductsInCartCount(
+        Object.values(JSON.parse(productQuantityFromLS)).filter(
+          (value) => value
+        ).length
+      );
     }
 
     // Get liked products from LS
@@ -56,10 +64,8 @@ function App() {
         Object.values(JSON.parse(likedProductsFromLS)).filter((value) => value)
           .length
       );
-
     }
   }, []);
-  
 
   const handleLike = (e: React.MouseEvent<HTMLDivElement>, id: number) => {
     e.preventDefault();
@@ -83,6 +89,9 @@ function App() {
         "product-quantity",
         JSON.stringify(productsQuantity)
       );
+      setproductsInCartCount(
+        Object.values(productsQuantity).filter((value) => value).length
+      );
       return productsQuantity;
     });
   };
@@ -95,12 +104,14 @@ function App() {
       localStorage.setItem(
         "product-quantity",
         JSON.stringify(productsQuantity)
-        );
-        return productsQuantity;
-      });
-    };
-    console.log(productQuantity)
-    
+      );
+      setproductsInCartCount(
+        Object.values(productsQuantity).filter((value) => value).length
+      );
+      return productsQuantity;
+    });
+  };
+
   return (
     <appContext.Provider
       value={{
@@ -112,6 +123,7 @@ function App() {
         handleDecreaseQuantity,
         handleIncreaseQuantity,
         productQuantity,
+        productsInCartCount,
       }}
     >
       <Router>

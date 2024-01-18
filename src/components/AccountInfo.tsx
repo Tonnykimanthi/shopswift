@@ -12,8 +12,7 @@ interface NavcontextProps {
 }
 
 const AccountInfo = () => {
-  const { navIsActive, setNavIsActive } = useContext(appContext) as NavcontextProps;
-  const {likeCount} = useContext(appContext) as ContextProps;
+  const { navIsActive, setNavIsActive, likeCount, productsInCartCount } = useContext(appContext) as ContextProps;
 
   return (
     <div className="mr-2.5 flex items-center gap-x-5">
@@ -30,7 +29,7 @@ const AccountInfo = () => {
       {/* Carts' */}
       <button className="flex gap-x-1 relative">
         <FaCartArrowDown className="w-6 h-6 fill-secondary-dark-blue"/>
-        <small className="text-white text-xs font-medium w-5 h-5 flex justify-center items-center rounded-full absolute -top-1.5 -right-2.5 bg-primary-orange">0</small>
+        <small className="text-white text-xs font-medium w-5 h-5 flex justify-center items-center rounded-full absolute -top-1.5 -right-2.5 bg-primary-orange">{productsInCartCount}</small>
       </button>
 
       {/* Btn to show sm screens navbar */}
