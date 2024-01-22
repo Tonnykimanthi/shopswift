@@ -21,7 +21,7 @@ const AccountInfo = () => {
       </Link>
 
       {/* to Carts' */}
-      <Link to="/cart" className="flex gap-x-1 relative">
+      <Link to="/shop/carts" className="flex gap-x-1 relative">
         <FaCartArrowDown className="w-6 h-6 fill-secondary-dark-blue"/>
         <small className="text-white text-xs font-medium w-5 h-5 flex justify-center items-center rounded-full absolute -top-1.5 -right-2.5 bg-primary-orange">{productsInCartCount}</small>
       </Link>

@@ -12,6 +12,7 @@ import ProductDetails from "./pages/ProductDetails";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { createContext, useEffect, useState } from "react";
 import SavedProducts from "./pages/SavedProducts";
+import Carts from "./pages/Carts";
 
 export interface ContextProps {
   navIsActive: boolean;
@@ -140,6 +141,7 @@ function App() {
           <Route path="/women's clothing" Component={WomenClothing} />
           <Route path="/shop/:id" Component={ProductDetails} />
           <Route path="/shop/saved" Component={SavedProducts} />
+          <Route path="/shop/carts" Component={Carts} />
         </Routes>
       </Router>
     </appContext.Provider>
