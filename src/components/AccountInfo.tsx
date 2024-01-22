@@ -14,14 +14,14 @@ const AccountInfo = () => {
         <Link to="/login">Login</Link>
       </button>
 
-      {/* Favorites */}
-      <Link to="/shop/savedproducts" className="max-md:hidden relative">
+      {/* to Saved */}
+      <Link to="/shop/saved" className="max-md:hidden relative">
         <MdFavoriteBorder className="w-6 h-6 fill-primary-darkblue"/>
         <small className="text-white text-xs font-medium w-5 h-5 flex justify-center items-center rounded-full absolute -top-1.5 -right-2.5 bg-primary-orange">{likeCount}</small>
       </Link>
 
-      {/* Carts' */}
-      <Link to="" className="flex gap-x-1 relative">
+      {/* to Carts' */}
+      <Link to="/cart" className="flex gap-x-1 relative">
         <FaCartArrowDown className="w-6 h-6 fill-secondary-dark-blue"/>
         <small className="text-white text-xs font-medium w-5 h-5 flex justify-center items-center rounded-full absolute -top-1.5 -right-2.5 bg-primary-orange">{productsInCartCount}</small>
       </Link>

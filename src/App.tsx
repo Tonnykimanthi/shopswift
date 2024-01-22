@@ -139,7 +139,7 @@ function App() {
           <Route path="/men's clothing" Component={MenClothing} />
           <Route path="/women's clothing" Component={WomenClothing} />
           <Route path="/shop/:id" Component={ProductDetails} />
-          <Route path="/shop/savedproducts" Component={SavedProducts} />
+          <Route path="/shop/saved" Component={SavedProducts} />
         </Routes>
       </Router>
     </appContext.Provider>
