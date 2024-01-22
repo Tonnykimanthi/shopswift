@@ -15,16 +15,16 @@ const AccountInfo = () => {
       </button>
 
       {/* Favorites */}
-      <button className="max-md:hidden relative">
+      <Link to="/shop/savedproducts" className="max-md:hidden relative">
         <MdFavoriteBorder className="w-6 h-6 fill-primary-darkblue"/>
         <small className="text-white text-xs font-medium w-5 h-5 flex justify-center items-center rounded-full absolute -top-1.5 -right-2.5 bg-primary-orange">{likeCount}</small>
-      </button>
+      </Link>
 
       {/* Carts' */}
-      <button className="flex gap-x-1 relative">
+      <Link to="" className="flex gap-x-1 relative">
         <FaCartArrowDown className="w-6 h-6 fill-secondary-dark-blue"/>
         <small className="text-white text-xs font-medium w-5 h-5 flex justify-center items-center rounded-full absolute -top-1.5 -right-2.5 bg-primary-orange">{productsInCartCount}</small>
-      </button>
+      </Link>
 
       {/* Btn to show sm screens navbar */}
       <button className="hidden max-md:block ml- p-2 rounded-full hover:text-slate-50 hover:bg-primary-darkblue transition" onClick={(e)=>{
