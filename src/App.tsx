@@ -11,7 +11,7 @@ import ProductDetails from "./pages/ProductDetails";
 // React
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { createContext, useEffect, useState } from "react";
-import SavedProducts from "./components/SavedProducts";
+import SavedProducts from "./pages/SavedProducts";
 
 export interface ContextProps {
   navIsActive: boolean;
@@ -38,7 +38,7 @@ function App() {
   const [likedProducts, setLikedProducts] = useState<likedProductsProps>({});
   const [likeCount, setLikeCount] = useState(0);
   const [productQuantity, setProductQuantity] = useState<productQuantityTypes>(
-    {}
+    {},
   );
   const [productsInCartCount, setproductsInCartCount] = useState(0);
 
@@ -50,8 +50,8 @@ function App() {
 
       setproductsInCartCount(
         Object.values(JSON.parse(productQuantityFromLS)).filter(
-          (value) => value
-        ).length
+          (value) => value,
+        ).length,
       );
     }
 
@@ -63,7 +63,7 @@ function App() {
       // Set likeCount
       setLikeCount(
         Object.values(JSON.parse(likedProductsFromLS)).filter((value) => value)
-          .length
+          .length,
       );
     }
   }, []);
@@ -76,7 +76,7 @@ function App() {
 
       // Set likeCount
       setLikeCount(
-        Object.values(likedProducts).filter((value) => value).length
+        Object.values(likedProducts).filter((value) => value).length,
       );
 
       return likedProducts;
@@ -88,10 +88,10 @@ function App() {
       const productsQuantity = { ...prev, [id]: (prev[id] || 0) + 1 };
       localStorage.setItem(
         "product-quantity",
-        JSON.stringify(productsQuantity)
+        JSON.stringify(productsQuantity),
       );
       setproductsInCartCount(
-        Object.values(productsQuantity).filter((value) => value).length
+        Object.values(productsQuantity).filter((value) => value).length,
       );
       return productsQuantity;
     });
@@ -104,10 +104,10 @@ function App() {
       };
       localStorage.setItem(
         "product-quantity",
-        JSON.stringify(productsQuantity)
+        JSON.stringify(productsQuantity),
       );
       setproductsInCartCount(
-        Object.values(productsQuantity).filter((value) => value).length
+        Object.values(productsQuantity).filter((value) => value).length,
       );
       return productsQuantity;
     });

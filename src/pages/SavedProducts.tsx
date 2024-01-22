@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { ContextProps, appContext } from "../App";
 import useFetch from "../hooks/useFetch";
-import Loader from "./Loader";
-import ErrorMessage from "./ErrorMessage";
-import { productProps } from "../pages/Shop";
-import ProductItem from "./ProductItem";
-import CategoriesTitle from "./CategoriesTitle";
+import Loader from "../components/Loader";
+import ErrorMessage from "../components/ErrorMessage";
+import { productProps } from "./Shop";
+import ProductItem from "../components/ProductItem";
+import CategoriesTitle from "../components/CategoriesTitle";
 
 const SavedProducts = () => {
   const { likedProducts } = useContext(appContext) as ContextProps;
@@ -28,11 +28,12 @@ const SavedProducts = () => {
     }
   }, [data]);
 
-
   return (
     <div className="mt-4 flex flex-col items-center px-5">
       {loading && <Loader />}
-      {!loading && !error && savedProducts?.length !== 0 && <CategoriesTitle title="Saved" />}
+      {!loading && !error && savedProducts?.length !== 0 && (
+        <CategoriesTitle title="Saved" />
+      )}
       {!loading && error ? (
         <ErrorMessage />
       ) : (
@@ -42,7 +43,9 @@ const SavedProducts = () => {
               <ProductItem item={item} key={item.id} />
             ))}
           </main>
-          {savedProducts?.length === 0 && <p className="text-slate-100 text-xl">You have no saved products</p>}
+          {savedProducts?.length === 0 && (
+            <p className="text-xl text-slate-100">You have no saved products</p>
+          )}
         </>
       )}
     </div>
