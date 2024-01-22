@@ -17,7 +17,7 @@ export interface productProps {
 
 const Shop = () => {
   const { data, loading, error } = useFetch(
-    "https://fakestoreapi.com/products"
+    "https://fakestoreapi.com/products",
   );
   const [products, setProducts] = useState<productProps[]>([]);
   const [searchValue, setSearchValue] = useState("");
@@ -37,20 +37,20 @@ const Shop = () => {
       return;
     } else {
       const filterBySearch = (data as productProps[]).filter((item) =>
-        item.title.toLowerCase().includes(searchValue.toLowerCase())
+        item.title.toLowerCase().includes(searchValue.toLowerCase()),
       );
       setProducts(filterBySearch);
     }
   };
 
   return (
-    <div className="mt-4 px-5 flex flex-col items-center">
+    <div className="mt-4 flex flex-col items-center px-5">
       {loading && <Loader />}
 
       {!loading && error ? (
         <ErrorMessage />
       ) : (
-        <div className="flex flex-col items-center w-full">
+        <div className="flex w-full flex-col items-center">
           {/* Search */}
           {!loading && (
             <>
@@ -59,11 +59,11 @@ const Shop = () => {
                 setSearchValue={setSearchValue}
                 handleSearchProduct={handleSearchProduct}
               />
-              <CategoriesTitle title="All Categories"/>
+              <CategoriesTitle title="All Categories" />
             </>
           )}
 
-          <main className="mt-3 w-full grid grid-cols-3 gap-3 max-md:grid-cols-2 max-sm:grid-cols-1">
+          <main className="mt-3 grid w-full grid-cols-3 gap-3 max-md:grid-cols-2 max-sm:grid-cols-1">
             {(products as productProps[]).map((item) => (
               <ProductItem item={item} key={item.id} />
             ))}
