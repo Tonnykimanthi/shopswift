@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useContext, useEffect, useRef } from "react";
 import { appContext } from "../App";
 import { IoMdClose } from "react-icons/io";
