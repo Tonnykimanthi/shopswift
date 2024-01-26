@@ -17,7 +17,7 @@ export interface productProps {
 
 const Shop = () => {
   const { data, loading, error } = useFetch(
-    "https://fakestoreapi.com/products"
+    "https://fakestoreapi.com/products",
   );
   const [products, setProducts] = useState<productProps[]>([]);
   const [searchValue, setSearchValue] = useState("");

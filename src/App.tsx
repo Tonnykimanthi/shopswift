@@ -140,8 +140,8 @@ function App() {
           <Route path="/men's clothing" Component={MenClothing} />
           <Route path="/women's clothing" Component={WomenClothing} />
           <Route path="/shop/:id" Component={ProductDetails} />
-          <Route path="/shop/saved" Component={SavedProducts} />
-          <Route path="/shop/carts" Component={Carts} />
+          <Route path="/saved" Component={SavedProducts} />
+          <Route path="/carts" Component={Carts} />
         </Routes>
       </Router>
     </appContext.Provider>

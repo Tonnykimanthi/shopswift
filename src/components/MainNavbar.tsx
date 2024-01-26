@@ -1,21 +1,40 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
+const navLinks = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "Shop",
+    href: "/shop",
+  },
+  {
+    name: "Electronics",
+    href: "/electronics",
+  },
+  {
+    name: "Jewelery",
+    href: "/jewelery",
+  },
+];
 
 const Navbar = () => {
   return (
     <nav className="max-md:hidden">
       <ul className="flex items-center gap-x-5 text-xl">
-        <li className="text-primary-darkblue hover:text-secondary-blue transition-colors">
-          <Link to="/">Home</Link>
-        </li>
-        <li className="text-primary-darkblue hover:text-secondary-blue transition-colors">
-          <Link to="/shop">Shop</Link>
-        </li>
-        <li className="text-primary-darkblue hover:text-secondary-blue transition-colors">
-          <Link to="/electronics">Electronics</Link>
-        </li>
-        <li className="text-primary-darkblue hover:text-secondary-blue transition-colors">
-          <Link to="/jewelery">Jewelery</Link>
-        </li>
+        {navLinks.map((item) => (
+          <li className="transition-colors hover:text-secondary-blue">
+            <NavLink
+              to={item.href}
+              className={({ isActive }) =>
+                isActive ? "text-primary-blue" : ""
+              }
+            >
+              {item.name}
+            </NavLink>
+          </li>
+        ))}
       </ul>
     </nav>
   );

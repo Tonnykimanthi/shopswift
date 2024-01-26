@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useContext, useEffect, useRef } from "react";
 import { appContext } from "../App";
 import { IoMdClose } from "react-icons/io";
@@ -7,9 +7,33 @@ interface NavcontextProps {
   navIsActive: boolean;
   setNavIsActive: (navIsActive: boolean) => void;
 }
+
+const navLinks = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "Shop",
+    href: "/shop",
+  },
+  {
+    name: "Electronics",
+    href: "/electronics",
+  },
+  {
+    name: "Jewelery",
+    href: "/jewelery",
+  },
+  {
+    name: "Favorites",
+    href: "/saved",
+  },
+];
+
 const SmScreensNavbar = () => {
   const { navIsActive, setNavIsActive } = useContext(
-    appContext
+    appContext,
   ) as NavcontextProps;
 
   const navBar = useRef<HTMLElement>(null);
@@ -33,36 +57,33 @@ const SmScreensNavbar = () => {
   return (
     <nav
       ref={navBar}
-      className={`absolute top-0 left-2/4 right-0 bottom-0 flex justify-center bg-primary-darkblue transition origin-top-right z-10 ${
+      className={`absolute bottom-0 left-2/4 right-0 top-0 z-20 flex origin-top-right justify-center bg-primary-darkblue transition ${
         navIsActive ? "scale-100" : "scale-0"
       }`}
     >
       {/* Close nav btn */}
       <button
-        className="absolute top-6 right-6 text-slate-50 hover:text-primary-red hover:scale-125 transition"
+        className="absolute right-6 top-6 text-slate-50 transition hover:scale-125 hover:text-primary-red"
         onClick={() => {
           setNavIsActive(!navIsActive);
         }}
       >
-        <IoMdClose className="w-6 h-6" />
+        <IoMdClose className="h-6 w-6" />
       </button>
 
-      <ul className="mt-20 space-y-5 text-cente text-primary-yellow text-xl">
-        <li className="hover:text-primary-orange transition-colors">
-          <Link to="/">Home</Link>
-        </li>
-        <li className="hover:text-primary-orange transition-colors">
-          <Link to="/shop">Shop</Link>
-        </li>
-        <li className="hover:text-primary-orange transition-colors">
-          <Link to="/electronics">Electronics</Link>
-        </li>
-        <li className="hover:text-primary-orange transition-colors">
-          <Link to="/jewelery">Jewelery</Link>
-        </li>
-        <li className="hover:text-primary-orange transition-colors">
-          <Link to="/favorites">Favorites</Link>
-        </li>
+      <ul className="mt-20 space-y-5 text-xl text-primary-yellow">
+        {navLinks.map((item) => (
+          <li className="transition-colors hover:text-primary-orange">
+            <NavLink
+              to={item.href}
+              className={({ isActive }) =>
+                isActive ? "text-primary-orange" : ""
+              }
+            >
+              {item.name}
+            </NavLink>
+          </li>
+        ))}
       </ul>
     </nav>
   );
