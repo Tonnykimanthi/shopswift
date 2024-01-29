@@ -15,6 +15,7 @@ const Carts = () => {
   const [carts, setCarts] = useState<productProps[]>();
   const [totalPrice, setTotalPrice] = useState<number>();
 
+  // Filter the items to be added to cart
   useEffect(() => {
     if (data) {
       const filterProductQuantityByIds = Object.keys(productQuantity)
@@ -39,8 +40,6 @@ const Carts = () => {
       setTotalPrice(total);
     }
   }, [carts, productQuantity]);
-  
-  console.log(totalPrice)
 
 
   return (
@@ -61,6 +60,11 @@ const Carts = () => {
             <p className="text-xl text-slate-100">You have no carts</p>
           )}
         </>
+      )}
+      {!loading && !error && carts?.length !== 0 && (
+        <button className="mt-5 w-2/3 max-w-lg bg-primary-orange py-2 text-xl font-medium text-white active:scale-95 hover:bg-primary-orange/90 transition">
+          Checkout: ${totalPrice?.toFixed(2)}
+        </button>
       )}
     </div>
   );
