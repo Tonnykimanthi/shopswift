@@ -24,7 +24,7 @@ const Navbar = () => {
     <nav className="max-md:hidden">
       <ul className="flex items-center gap-x-5 text-xl">
         {navLinks.map((item) => (
-          <li className="transition-colors hover:text-secondary-blue">
+          <li key={item.name} className="transition-colors hover:text-secondary-blue">
             <NavLink
               to={item.href}
               className={({ isActive }) =>
