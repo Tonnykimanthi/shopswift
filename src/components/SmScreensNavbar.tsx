@@ -52,7 +52,7 @@ const SmScreensNavbar = () => {
     return () => {
       document.body.removeEventListener("click", handleCloseNavbar);
     };
-  });
+  }, []);
 
   return (
     <nav
