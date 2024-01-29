@@ -62,7 +62,7 @@ const Carts = () => {
         </>
       )}
       {!loading && !error && carts?.length !== 0 && (
-        <button className="mt-5 w-2/3 max-w-lg bg-primary-orange py-2 text-xl font-medium text-white active:scale-95 hover:bg-primary-orange/90 transition">
+        <button className="mt-5 w-2/3 max-w-lg bg-primary-orange py-2.5 text-xl font-medium text-white active:scale-95 hover:bg-primary-orange/90 rounded-sm transition">
           Checkout: ${totalPrice?.toFixed(2)}
         </button>
       )}
