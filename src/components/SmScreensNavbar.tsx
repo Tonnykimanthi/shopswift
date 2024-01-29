@@ -73,7 +73,7 @@ const SmScreensNavbar = () => {
 
       <ul className="mt-20 space-y-5 text-xl text-primary-yellow">
         {navLinks.map((item) => (
-          <li className="transition-colors hover:text-primary-orange">
+          <li key={item.name} className="transition-colors hover:text-primary-orange">
             <NavLink
               to={item.href}
               className={({ isActive }) =>
