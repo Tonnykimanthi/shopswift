@@ -13,14 +13,13 @@ const Carts = () => {
     "https://fakestoreapi.com/products",
   );
   const [carts, setCarts] = useState<productProps[]>();
+  const [totalPrice, setTotalPrice] = useState<number>();
 
   useEffect(() => {
     if (data) {
       const filterProductQuantityByIds = Object.keys(productQuantity)
         .filter((id) => productQuantity[Number(id)] > 0)
         .map(Number);
-
-      console.log("ids", filterProductQuantityByIds);
 
       const filteredData = (data as productProps[]).filter((product) => {
         return filterProductQuantityByIds.includes(product.id);
@@ -29,7 +28,20 @@ const Carts = () => {
     }
   }, [data]);
 
-  console.log(carts);
+  // Calculating total price.
+  useEffect(() => {
+    if (data && carts) {
+      let total = 0;
+      carts.forEach((product) => {
+        const quantity = productQuantity[product.id];
+        total += quantity * product.price;
+      });
+      setTotalPrice(total);
+    }
+  }, [carts, productQuantity]);
+  
+  console.log(totalPrice)
+
 
   return (
     <div className="mt-4 flex flex-col items-center px-5">
