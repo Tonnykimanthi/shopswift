@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { ContextProps, appContext } from "../App";
 import { MdFavoriteBorder } from "react-icons/md";
 import { FaCartArrowDown } from "react-icons/fa6";
@@ -13,7 +13,8 @@ const AccountInfo = () => {
     productsInCartCount,
     totalPrice,
   } = useContext(appContext) as ContextProps;
-  const [modelIsOpen, setModelIsOpen] = useState<boolean>(true);
+  const [modelIsOpen, setModelIsOpen] = useState<boolean>(false);
+  const modal = useRef<HTMLDivElement>(null);
 
   const handleToggleModel = () => {
     setModelIsOpen((prevState) => !prevState);
@@ -28,6 +29,20 @@ const AccountInfo = () => {
       return quantity + " Items";
     }
   };
+
+  useEffect(() => {
+    const handleCloseModal = (e: Event) => {
+      if (modal.current === null) return;
+      if (!modal.current.contains(e.target as HTMLDivElement)) {
+        setModelIsOpen(false);
+      }
+    };
+    document.addEventListener("click", handleCloseModal);
+
+    return () => {
+      document.removeEventListener("click", handleCloseModal);
+    };
+  }, []);
 
   return (
     <div className="mr-2.5 flex items-center gap-x-5">
@@ -44,7 +59,7 @@ const AccountInfo = () => {
       </Link>
 
       {/* Carts */}
-      <div className="relative flex gap-x-1">
+      <div ref={modal} className="relative flex gap-x-1">
         <button className="relative" onClick={handleToggleModel}>
           <FaCartArrowDown className="h-6 w-6 fill-secondary-dark-blue" />
           <small className="absolute -right-2.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-primary-orange text-xs font-medium text-white">
