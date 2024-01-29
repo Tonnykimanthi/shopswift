@@ -10,7 +10,7 @@ import WomenClothing from "./pages/WomenClothing";
 import ProductDetails from "./pages/ProductDetails";
 // React
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import SavedProducts from "./pages/SavedProducts";
 import Carts from "./pages/Carts";
 
@@ -24,6 +24,8 @@ export interface ContextProps {
   handleDecreaseQuantity: (id: number) => void;
   productQuantity: productQuantityTypes;
   productsInCartCount: number;
+  totalPrice: number | null;
+  setTotalPrice: React.Dispatch<React.SetStateAction<number | null>>
 }
 interface likedProductsProps {
   [id: number]: boolean;
@@ -34,6 +36,7 @@ interface productQuantityTypes {
 
 export const appContext = createContext<ContextProps | null>(null);
 
+// React component
 function App() {
   const [navIsActive, setNavIsActive] = useState(false);
   const [likedProducts, setLikedProducts] = useState<likedProductsProps>({});
@@ -42,6 +45,7 @@ function App() {
     {},
   );
   const [productsInCartCount, setproductsInCartCount] = useState(0);
+  const [totalPrice, setTotalPrice] = useState<number | null>(null);
 
   useEffect(() => {
     // Get product quantity from LS
@@ -126,6 +130,8 @@ function App() {
         handleIncreaseQuantity,
         productQuantity,
         productsInCartCount,
+        totalPrice,
+        setTotalPrice
       }}
     >
       <Router>

@@ -8,12 +8,11 @@ import ErrorMessage from "../components/ErrorMessage";
 import ProductItem from "../components/ProductItem";
 
 const Carts = () => {
-  const { productQuantity } = useContext(appContext) as ContextProps;
+  const { productQuantity, setTotalPrice } = useContext(appContext) as ContextProps;
   const { data, loading, error } = useFetch(
     "https://fakestoreapi.com/products",
   );
   const [carts, setCarts] = useState<productProps[]>();
-  const [totalPrice, setTotalPrice] = useState<number>();
 
   // Filter the items to be added to cart
   useEffect(() => {
@@ -60,11 +59,6 @@ const Carts = () => {
             <p className="text-xl text-slate-100">You have no carts</p>
           )}
         </>
-      )}
-      {!loading && !error && carts?.length !== 0 && (
-        <button className="mt-5 w-2/3 max-w-lg bg-primary-orange py-2.5 text-xl font-medium text-white active:scale-95 hover:bg-primary-orange/90 rounded-sm transition">
-          Checkout: ${totalPrice?.toFixed(2)}
-        </button>
       )}
     </div>
   );
