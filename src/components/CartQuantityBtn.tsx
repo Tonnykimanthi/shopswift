@@ -13,8 +13,8 @@ const CartQuantityBtn = ({ item }: itemProps) => {
     useContext(appContext) as ContextProps;
 
   return (
-    <div className="border border-primary-orange/80 flex justify-around items-center w-full py-2 font-medium transition" onClick={e => e.preventDefault()}>
-      <button
+    <div className="border border-primary-orange/50 flex justify-evenly items-center w-full py-1 px-5 font-medium transition" onClick={e => e.preventDefault()}>
+      <button className="bg-primary-orange hover:scale-105 active:scale-100 rounded text-white p-2 transition"
         onClick={() => {
           handleDecreaseQuantity(item.id);
         }}
@@ -22,7 +22,7 @@ const CartQuantityBtn = ({ item }: itemProps) => {
         <FaMinus className="text-xl" />
       </button>
       <span className="text-xl">{productQuantity[item.id] || 0}</span>
-      <button
+      <button className="bg-primary-orange hover:scale-105 active:scale-100 rounded text-white p-2 transition"
         onClick={() => {
           handleIncreaseQuantity(item.id);
         }}
