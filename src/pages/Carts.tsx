@@ -26,7 +26,7 @@ const Carts = () => {
       });
       setCarts(filteredData);
     }
-  }, [data]);
+  }, [data, productQuantity]);
 
   // Calculating total price.
   useEffect(() => {
