@@ -30,21 +30,21 @@ const HomePageCategories = () => {
   ];
 
   return (
-    <section className="my-5 px-5 grid grid-cols-3 grid-rows-[250px,250px] max-sm:grid-rows-[400px,400px,400px,400px] gap-2 max-sm:grid-cols-1">
+    <section className="mt-5 grid grid-cols-3 grid-rows-[250px,250px] gap-2 px-5 max-sm:grid-cols-1 max-sm:grid-rows-[400px,400px,400px,400px]">
       {categories.map((category, index) => (
         <article
           key={index}
-          className={`bg-center bg-cover relative cursor-pointer overflow-hidden group ${category.customStyles}`}
+          className={`group relative cursor-pointer overflow-hidden bg-cover bg-center ${category.customStyles}`}
         >
           <img
-            className="w-full h-full object-cover group-hover:scale-110 transition duration-300"
+            className="h-full w-full object-cover transition duration-300 group-hover:scale-110"
             src={category.image}
             alt=""
           />
-          <div className="absolute top-24 left-8 text-white">
+          <div className="absolute left-8 top-24 text-white">
             <h4 className="text-3xl font-bold">{category.title}</h4>
             <Link to={`/${category.path}`}>
-              <button className="mt-2 px-4 py-1 font-medium rounded border border-primary-darkblue hover:bg-primary-darkblue transition">
+              <button className="mt-2 rounded border border-primary-darkblue px-4 py-1 font-medium transition hover:bg-primary-darkblue">
                 Shop now
               </button>
             </Link>
