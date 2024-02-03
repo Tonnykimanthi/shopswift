@@ -60,12 +60,12 @@ const AccountInfo = () => {
 
       {/* Carts */}
       <div ref={modal} className="relative flex gap-x-1">
-        <button className="relative" onClick={handleToggleModel}>
+        <Link to="/carts" className="relative" onClick={handleToggleModel}>
           <FaCartArrowDown className="h-6 w-6 fill-secondary-dark-blue" />
           <small className="absolute -right-2.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-primary-orange text-xs font-medium text-white">
             {productsInCartCount}
           </small>
-        </button>
+        </Link>
 
         <div
           className={`absolute right-0 top-11 z-20 w-64 origin-top-right bg-black p-2 text-white shadow-xl shadow-primary-darkblue/40 transition ${modelIsOpen ? "scale-100" : "scale-0"}`}
@@ -80,7 +80,7 @@ const AccountInfo = () => {
             to="/carts"
             className="mt-2 block rounded-sm bg-primary-blue py-1.5 text-center text-white transition hover:bg-primary-blue/90 active:scale-95"
           >
-            View cart
+            Checkout
           </Link>
         </div>
       </div>
