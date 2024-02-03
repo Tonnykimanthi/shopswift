@@ -1,4 +1,4 @@
-export const homePageList = [
+export const heroSectionList = [
   {
     title: "men's clothing",
     description: "From jeans, t-shirts, jackets, watches, sunglasses, bags",

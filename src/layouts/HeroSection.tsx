@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { homePageList } from "../data/homePageList";
+import { heroSectionList } from "../data/heroSectionList";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion"
 
-const HomePageMain = () => {
+const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [sectionKey, setSectionKey] = useState<number>(0);
   const [asideKey, setAsideKey] = useState<number>(1);
@@ -17,7 +17,7 @@ const HomePageMain = () => {
   }, []);
 
   const handleCurrentCategory = () => {
-    setCurrentIndex((prev) => (prev + 1) % homePageList.length);
+    setCurrentIndex((prev) => (prev + 1) % heroSectionList.length);
     setSectionKey((prev) => prev + 1);
     setAsideKey((prev) => prev + 1);
   };
@@ -31,10 +31,10 @@ const HomePageMain = () => {
         transition={{ duration: 0.5, delay: 0.6 }}
       >
         <h2 className="text-6xl font-bold">
-          {homePageList[currentIndex].title}
+          {heroSectionList[currentIndex].title}
         </h2>
         <p className="mt-1 font-medium">
-          {homePageList[currentIndex].description}
+          {heroSectionList[currentIndex].description}
         </p>
         <button className="mt-5 px-6 py-2 text-white rounded bg-primary-darkblue hover:bg-black transition max-sm:block max-sm:mx-auto">
           <Link to="shop">Shop now</Link>
@@ -49,12 +49,12 @@ const HomePageMain = () => {
       >
         <img
           className="object-cover"
-          src={homePageList[currentIndex].image}
-          alt={homePageList[currentIndex].title}
+          src={heroSectionList[currentIndex].image}
+          alt={heroSectionList[currentIndex].title}
         />
       </motion.aside>
     </main>
   );
 };
 
-export default HomePageMain;
+export default HeroSection;
