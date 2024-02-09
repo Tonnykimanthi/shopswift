@@ -1,22 +1,59 @@
-import { HiOutlineMail } from "react-icons/hi";
-import { BsTelephone } from "react-icons/bs";
+import { TbWorld } from "react-icons/tb";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaLinkedinIn } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="mt-5 px-5 text-white">
-      <div className="bg-black/30 p-5">
+    <footer className="mt-5 px-5 text-white max-sm:px-2">
+      <div className="flex justify-evenly bg-black/30 p-5">
         <article>
-          <h5 className="mb-4 font-medium underline underline-offset-4">
-            CONTACT US
-          </h5>
-          <div className="flex items-center text-gray-100">
-            <HiOutlineMail className="h-5 w-5" />
-            <span className="ml-2">shopswift@gmail.com</span>
-          </div>
-          <div className="mt-2 flex items-center text-gray-100">
-            <BsTelephone className="h-5 w-5" />
-            <span className="ml-2">+01 234 567 89</span>
-          </div>
+          <h5 className="mb-4 text-lg font-medium">Social</h5>
+          <section className="space-y-2 text-gray-300">
+            <Link
+              to="https://tonykimanthi.github.io/personal-portfolio/public/"
+              target="_blank"
+              className="flex items-center gap-x-2"
+            >
+              <TbWorld className="h-5 w-5" />
+              <span>Resume</span>
+            </Link>
+            <Link
+              to="https://www.linkedin.com/in/tonnykimanthi/"
+              target="_blank"
+              className="flex items-center gap-x-2"
+            >
+              <FaLinkedinIn className="h-5 w-5" />
+              <span>LinkedIn</span>
+            </Link>
+            <Link
+              to="https://twitter.com/km_tonny"
+              target="_blank"
+              className="flex items-center gap-x-2"
+            >
+              <FaXTwitter className="h-5 w-5" />
+              <span>Twitter</span>
+            </Link>
+            <Link
+              to="https://www.instagram.com/toney.k_/"
+              target="_blank"
+              className="flex items-center gap-x-2"
+            >
+              <FaInstagram className="h-5 w-5" />
+              <span>Instagram</span>
+            </Link>
+          </section>
+        </article>
+
+        <article>
+          <h5 className="mb-4 text-lg font-medium">Company</h5>
+          <section className="space-y-2 text-gray-300 [&>a]:block">
+            <Link to="/">About Us</Link>
+            <Link to="/">Contact Us</Link>
+            <Link to="/">Privacy Policy</Link>
+            <Link to="/">Terms of Service</Link>
+          </section>
         </article>
       </div>
     </footer>
