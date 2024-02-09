@@ -30,7 +30,7 @@ const HomePageCategories = () => {
   ];
 
   return (
-    <section className="mt-5 grid grid-cols-3 grid-rows-[250px,250px] gap-2 px-5 max-sm:grid-cols-1 max-sm:grid-rows-[400px,400px,400px,400px]">
+    <section className="mt-5 grid grid-cols-3 grid-rows-[250px,250px] gap-2 px-5 max-sm:grid-cols-1 max-sm:grid-rows-[400px,400px,400px,400px] max-sm:px-2">
       {categories.map((category, index) => (
         <article
           key={index}
