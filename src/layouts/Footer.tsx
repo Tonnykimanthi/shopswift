@@ -14,7 +14,7 @@ const Footer = () => {
             <Link
               to="https://tonykimanthi.github.io/personal-portfolio/public/"
               target="_blank"
-              className="flex items-center gap-x-2"
+              className="flex items-center gap-x-2 hover:text-primary-lightblue transition"
             >
               <TbWorld className="h-5 w-5" />
               <span>Resume</span>
@@ -22,7 +22,7 @@ const Footer = () => {
             <Link
               to="https://www.linkedin.com/in/tonnykimanthi/"
               target="_blank"
-              className="flex items-center gap-x-2"
+              className="flex items-center gap-x-2 hover:text-primary-lightblue transition"
             >
               <FaLinkedinIn className="h-5 w-5" />
               <span>LinkedIn</span>
@@ -30,7 +30,7 @@ const Footer = () => {
             <Link
               to="https://twitter.com/km_tonny"
               target="_blank"
-              className="flex items-center gap-x-2"
+              className="flex items-center gap-x-2 hover:text-primary-lightblue transition"
             >
               <FaXTwitter className="h-5 w-5" />
               <span>Twitter</span>
@@ -38,7 +38,7 @@ const Footer = () => {
             <Link
               to="https://www.instagram.com/toney.k_/"
               target="_blank"
-              className="flex items-center gap-x-2"
+              className="flex items-center gap-x-2 hover:text-primary-lightblue transition"
             >
               <FaInstagram className="h-5 w-5" />
               <span>Instagram</span>
@@ -49,10 +49,18 @@ const Footer = () => {
         <article>
           <h5 className="mb-4 text-lg font-medium">Company</h5>
           <section className="space-y-2 text-gray-300 [&>a]:block">
-            <Link to="/">About Us</Link>
-            <Link to="/">Contact Us</Link>
-            <Link to="/">Privacy Policy</Link>
-            <Link to="/">Terms of Service</Link>
+            <Link to="/" className="hover:text-primary-lightblue transition">
+              About Us
+            </Link>
+            <Link to="/" className="hover:text-primary-lightblue transition">
+              Contact Us
+            </Link>
+            <Link to="/" className="hover:text-primary-lightblue transition">
+              Privacy Policy
+            </Link>
+            <Link to="/" className="hover:text-primary-lightblue transition">
+              Terms of Service
+            </Link>
           </section>
         </article>
       </div>
