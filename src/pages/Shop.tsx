@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+// Hooks
+import useFetch from "../hooks/useFetch"; 
 // Components
-import useFetch from "../hooks/useFetch";
 import Search from "../components/Search";
 import Loader from "../components/Loader";
 import ErrorMessage from "../components/ErrorMessage";
