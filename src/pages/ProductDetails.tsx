@@ -107,7 +107,7 @@ const ProductDetails = () => {
                       </section>
                     </div>
                     <div className="mt-5 px-2 w-full">
-                      {productQuantity[product.id] < 1 ? (
+                      {productQuantity[product.id] < 1 || productQuantity[product.id] === undefined ? (
                         <AddToCartBtn item={product} />
                       ) : (
                         <CartQuantityBtn item={product} />
