@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { heroSectionList } from "../data/heroSectionList";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 
 const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -9,10 +9,10 @@ const HeroSection = () => {
   const [asideKey, setAsideKey] = useState<number>(1);
 
   useEffect(() => {
-    const currentIndex = setInterval(handleCurrentCategory, 5000);
+    const intervalId = setInterval(handleCurrentCategory, 5000);
 
     return () => {
-      clearInterval(currentIndex);
+      clearInterval(intervalId);
     };
   }, []);
 
@@ -24,11 +24,13 @@ const HeroSection = () => {
 
   return (
     <main className="bg-primary-lightblue h-96 text-black px-32 flex justify-between items-center overflow-hidden max-lg:px-10 max-sm:flex-col-reverse max-sm:justify-center max-sm:h-fit max-sm:py-6 max-sm:text-center">
+    <AnimatePresence mode="wait">  
       <motion.section
         key={sectionKey}
         initial={{ opacity: 0, y: 100 + "%" }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.6 }}
+        exit={{opacity: 0, y: "-100%"}}
+        transition={{ duration: 1 }}
       >
         <h2 className="text-6xl font-bold">
           {heroSectionList[currentIndex].title}
@@ -40,11 +42,14 @@ const HeroSection = () => {
           <Link to="shop">Shop now</Link>
         </button>
       </motion.section>
+    </AnimatePresence>
+    <AnimatePresence mode="wait">
       <motion.aside
         key={asideKey}
         className="w-96 max-sm:w-40"
         initial={{ x: 100 + "%", opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
+        exit={{y: "100%", opacity: 0}}
         transition={{ duration: 1 }}
       >
         <img
@@ -53,6 +58,7 @@ const HeroSection = () => {
           alt={heroSectionList[currentIndex].title}
         />
       </motion.aside>
+    </AnimatePresence>  
     </main>
   );
 };
