@@ -34,7 +34,7 @@ const ShippingInfo = () => {
   ];
 
   return (
-    <section className="flex items-center justify-center gap-x-3 gap-y-5 border-b border-slate-300 bg-slate-100 py-5 max-sm:flex-col">
+    <section className="flex items-center justify-evenly gap-x-3 gap-y-5 border-b border-slate-300 bg-slate-100 py-5 px-4 max-sm:flex-col">
       {shippingData.map((item, index) => (
         <article key={index} className="flex items-center gap-x-3">
           <item.icon className={`${item.styles}`} />
