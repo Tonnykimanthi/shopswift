@@ -12,7 +12,7 @@ const Footer = () => {
           <h5 className="mb-4 text-lg font-medium">Social</h5>
           <section className="space-y-2 text-gray-300">
             <Link
-              to="https://tonykimanthi.github.io/personal-portfolio/public/"
+              to="https://my-portfolio-theta-seven-16.vercel.app/"
               target="_blank"
               className="flex items-center gap-x-2 hover:text-primary-lightblue transition"
             >
@@ -28,7 +28,7 @@ const Footer = () => {
               <span>LinkedIn</span>
             </Link>
             <Link
-              to="https://twitter.com/km_tonny"
+              to="https://twitter.com/TonnyKm"
               target="_blank"
               className="flex items-center gap-x-2 hover:text-primary-lightblue transition"
             >
@@ -36,7 +36,7 @@ const Footer = () => {
               <span>Twitter</span>
             </Link>
             <Link
-              to="https://www.instagram.com/toney.k_/"
+              to="https://www.instagram.com/tonnykm_/"
               target="_blank"
               className="flex items-center gap-x-2 hover:text-primary-lightblue transition"
             >
